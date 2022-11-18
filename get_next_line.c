@@ -6,44 +6,75 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:14:11 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/17 22:53:53 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:33:36 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*print_until_nl(char *str)
+char	*read_until_nl(int fd, char *str)
+{
+	char	*buff;
+	int		readbytes;
+	
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (NULL);
+	readbytes = read(fd, buff, BUFFER_SIZE);
+	while (readbytes > 0)
+	{
+		str = strjoin_gnl(str, buff);
+		if (strchr_gnl(str) == 1)
+			break ;
+		readbytes = read(fd, buff, BUFFER_SIZE);
+//		buff[readbytes] = '\0';
+	}
+	free(buff);
+	return (str);
+}
+
+char	*copy_until_nl(char *str)
 {
 	int		i;
 	char	*line;
 
 	i = 0;
-	line = malloc(sizeof(char) * strlen_gnl(str) + 1);
+	line = malloc(sizeof(char) * (strlen_gnl(str) + 2));
+	if (!line)
+		return (NULL);
 	while (i < strlen_gnl(str) + 1)
 	{
 		line[i] = str[i];
 		i++;
 	}
+	line[i] = '\0';
 	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*buff;
-	char	*line;
+	static char	*text;
+	char		*nline;
 
-	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (!buff)
-		return (NULL);
-	read(fd, buff, BUFFER_SIZE);
-	line = print_until_nl(buff);
-	return (line);
+	text = read_until_nl(fd, text);
+	nline = copy_until_nl(text);
+	return (nline);
 }
 
-int	main(void)
+int main(void)
 {
-	int	fd = open("text", O_RDONLY);
-
-	printf("%s", get_next_line(fd));
+	int fd = open("text", O_RDONLY);
+	char	*s;
+	
+	s = get_next_line(fd);
+	printf("%s", s);
+	// s = get_next_line(fd);
+	// printf("%s", s);
+	// s = get_next_line(fd);
+	// printf("%s", s);
+	// s = get_next_line(fd);
+	// printf("%s", s);
+	// s = get_next_line(fd);
+	// printf("%s", s);
 	close(fd);
 }
