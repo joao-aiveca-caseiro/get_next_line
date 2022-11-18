@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:26:25 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/16 16:09:29 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/17 22:51:55 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-/*int	strchr_gnl(char *str)
+int	strlen_gnl(char *str)
 {
 	int				i;
 
@@ -25,8 +25,8 @@ void	ft_putchar(char c)
 	while (str[i])
 	{
 		if (str[i] == '\n')
-			return (1);
+			return (i);
 		i++;
 	}
 	return (0);
-}*/
+}

@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:14:11 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/16 16:38:17 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/17 22:53:53 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*print_until_nl(char *str)
 	char	*line;
 
 	i = 0;
-	while ((str[i]) != '\n')
+	line = malloc(sizeof(char) * strlen_gnl(str) + 1);
+	while (i < strlen_gnl(str) + 1)
 	{
 		line[i] = str[i];
 		i++;
