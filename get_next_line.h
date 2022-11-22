@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:52:53 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/18 18:23:02 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:46:57 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
@@ -28,6 +28,7 @@ size_t	ft_strlen(const char *str);
 int		strlen_gnl(char *str);
 int		strchr_gnl(const char *str);
 char	*strjoin_gnl(char *s1, char *s2);
+void	*ft_calloc(size_t nitems, size_t size);
 
 
 #endif
