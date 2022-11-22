@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:26:25 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/18 18:28:40 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:11:12 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ char	*strjoin_gnl(char *s1, char *s2)
 		j++;
 	}
 	res[j] = '\0';
+//	free(s1);
 	return (res);
 }
