@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:14:11 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/22 17:20:41 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:40:58 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,19 @@ char	*read_line(int fd, char *str)
 {
 	char	*buff;
 	int		readbytes;
-	
-//	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+
 	buff = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!buff)
 		return (NULL);
 	readbytes = read(fd, buff, BUFFER_SIZE);
+	if (readbytes <= 0)
+	{
+		if (str[0] != '\0')
+		{
+			free(str);
+			str = NULL;
+		}
+	}
 	while (readbytes > 0)
 	{
 		str = strjoin_gnl(str, buff);
