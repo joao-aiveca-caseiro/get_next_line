@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:14:11 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/24 16:51:47 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:03:43 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_buffer(int fd, char *str)
 {
@@ -93,24 +93,24 @@ char	*trim_printed(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*text;
+	static char	*text[1024];
 	char		*nline;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 	{
-		if (text)
+		if (text[fd])
 		{
-			free(text);
-			text = NULL;
+			free(text[fd]);
+			text[fd] = NULL;
 		}
 		return (NULL);
 	}
-	if (!text)
-		text = ft_calloc(1, sizeof(char));
-	if (strchr_gnl(text) == 0)
-		text = read_buffer(fd, text);
-	nline = copy_until_nl(text);
-	text = trim_printed(text);
+	if (!text[fd])
+		text[fd] = ft_calloc(1, sizeof(char));
+	if (strchr_gnl(text[fd]) == 0)
+		text[fd] = read_buffer(fd, text[fd]);
+	nline = copy_until_nl(text[fd]);
+	text[fd] = trim_printed(text[fd]);
 	return (nline);
 }
 
