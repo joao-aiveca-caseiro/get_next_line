@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:14:11 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/24 17:03:43 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/25 03:11:45 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ char	*get_next_line(int fd)
 	return (nline);
 }
 
-/*int	main(void)
+/*
+# include <fcntl.h>
+
+int	main(void)
 {
 	int fd = open("text", O_RDONLY);
 	char	*s;

@@ -6,7 +6,7 @@
 /*   By: jaiveca- <jaiveca-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:14:11 by jaiveca-          #+#    #+#             */
-/*   Updated: 2022/11/24 16:51:47 by jaiveca-         ###   ########.fr       */
+/*   Updated: 2022/11/25 03:39:34 by jaiveca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,14 @@ char	*get_next_line(int fd)
 	return (nline);
 }
 
-/*int	main(void)
+/*# include <fcntl.h>
+
+int	main(void)
 {
 	int fd = open("text", O_RDONLY);
 	char	*s;
-	
-	s = get_next_line(fd);
+
+	s = get_next_line(-1);
 	printf("Line 1:\n%s", s);
 	free(s);
 	s = get_next_line(fd);
